@@ -2,11 +2,11 @@ using BaseCleanArchitecture.API.Middlewares.ExceptionHandlerMiddleware;
 using BaseCleanArchitecture.API.Middlewares.SeedMiddleware;
 using BaseCleanArchitecture.DependencyInjection;
 using BaseCleanArchitecture.DependencyInjection.OpenApi;
-using Sample.API.DataSeed;
 using Sample.Application.Core.Abstractions.Data;
 using Sample.Infrastructure;
 using Sample.Persistence;
 using Sample.Persistence.Context;
+using Sample.Persistence.DataSeed;
 
 
 var builder = WebApplication.CreateBuilder(args);
