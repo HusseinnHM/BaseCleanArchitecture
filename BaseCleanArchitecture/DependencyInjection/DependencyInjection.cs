@@ -34,7 +34,7 @@ public static class DependencyInjection
         services.AddSingleton<IDomainEventDispatcher, InMemoryDomainEventDispatcher>();
 
         services.Scan(s => s.FromAssemblies(assemblyNames)
-            .AddClasses(c => c.AssignableToAny(typeof(IRequestHandler<,>),typeof(IDomainEventHandler<>),typeof(IRepository<,>)))
+            .AddClasses(c => c.AssignableToAny(typeof(IRequestHandler<,>),typeof(IDomainEventHandler<>),typeof(IRepository<,>),typeof(IPipelineBehavior<,>)))
             .AsImplementedInterfaces()
             .WithScopedLifetime());
         
