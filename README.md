@@ -12,7 +12,7 @@
 
 <div style="display: flex;"> 
 
-[nuget](https://www.nuget.org/packages/BaseCleanArchitecture/) | [Sample](https://github.com/HusseinnHM/BaseCleanArchitecture/blob/master/Sample) | [Source Code](https://github.com/HusseinnHM/BaseCleanArchitecture)
+[nuget](https://www.nuget.org/packages/BaseCleanArchitecture/) | [Sample](https://github.com/HusseinnHM/BaseCleanArchitecture/blob/master/Sample) | [Source Code](https://github.com/HusseinnHM/BaseCleanArchitecture/blob/master/BaseCleanArchitecture)
 
 </div>
 
