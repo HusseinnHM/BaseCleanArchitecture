@@ -1,6 +1,7 @@
 using BaseCleanArchitecture.Application.Core.Abstractions.Common;
 using BaseCleanArchitecture.Application.Core.Abstractions.Data;
 using BaseCleanArchitecture.Application.Dispatchers.DomainEventDispatcher;
+using BaseCleanArchitecture.Domain.Events;
 using BaseCleanArchitecture.Domain.Primitives;
 using BaseCleanArchitecture.Domain.Primitives.Entity.Interface;
 using Microsoft.AspNetCore.Identity;
@@ -225,16 +226,18 @@ public class BaseDbContext<TKey, TUser, TRole, TUserClaim, TUserRole, TUserLogin
 
     private async Task DispatchDomainEventsAsync(CancellationToken cancellationToken)
     {
+        var domainEvents = new List<IDomainEvent>();
         foreach (var domainEntity in ChangeTracker
                      .Entries<AggregateRoot<TKey>>()
                      .Where(a => a.Entity.DomainEvents.Any()))
         {
-            foreach (var domainEvent in domainEntity.Entity.DomainEvents)
-            {
-                await _domainEventDispatcher.PublishAsync(domainEvent, cancellationToken);
-            }
-
+            domainEvents.AddRange(domainEntity.Entity.DomainEvents);
             domainEntity.Entity.ClearDomainEvents();
+        }
+
+        foreach (var @event in domainEvents)
+        {
+            await _domainEventDispatcher.PublishAsync(@event, cancellationToken);
         }
     }
 }
